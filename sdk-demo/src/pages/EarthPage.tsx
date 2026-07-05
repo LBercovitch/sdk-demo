@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import Map from '../components/Map.tsx'
 
 function EarthPage() {
+  var mapId = "33b628294cb04e22b6a324c943817b74";
   return (
     <>
       <div className="w-30 p-5">
@@ -14,7 +15,7 @@ function EarthPage() {
           </div>
         </Link>
       </div>
-      <Map mapId="33b628294cb04e22b6a324c943817b74"/>
+      <Map mapId={mapId} />
     </>
   )
 }

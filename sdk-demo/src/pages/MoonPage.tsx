@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import Map from '../components/Map.tsx'
 
 function MoonPage() {
+  var mapId = "d7e6f5eaec4a4d259269c65c6d5435bf";
   return (
     <>
       <div className="w-30 p-5">
@@ -14,7 +15,7 @@ function MoonPage() {
           </div>
         </Link>
       </div>
-      <Map mapId="d7e6f5eaec4a4d259269c65c6d5435bf"/>
+      <Map mapId={mapId} />
     </>
   )
 }
