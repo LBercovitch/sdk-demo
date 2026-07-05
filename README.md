@@ -1,7 +1,7 @@
 # sdk-demo
 A simple application using ArcGIS Maps SDK.
 
-This app uses [react](https://react.dev/), [vite](https://vite.dev/), and [tailwind](https://tailwindcss.com/).
+This app uses [ArcGIS Maps SDK for JavaScript](https://developers.arcgis.com/javascript/latest/), [react](https://react.dev/), [vite](https://vite.dev/), and [tailwind](https://tailwindcss.com/).
 
 Setup:
 
