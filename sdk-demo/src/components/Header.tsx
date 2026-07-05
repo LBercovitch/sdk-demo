@@ -1,7 +1,7 @@
 function Header() {
   return (
-    <div className="flex justify-center items-center bg-slate-950 h-48">
-      <h1 className="mr-10 text-purple-50 text-shadow-amber-h1 text-8xl font-barrio">
+    <div className="flex justify-center items-center h-20 md:h-48">
+      <h1 className="mr-2 md:mr-10 text-4xl md:text-8xl header-text">
         Map Demo
       </h1>
       <img className='h-full' src="/colour-conjuror-cat.png" alt="A Cat Conjuror"/>
