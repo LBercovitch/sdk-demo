@@ -4,7 +4,7 @@ import Header from '../components/Header.tsx'
 function LandingPage() {
   return (
     <>
-      <Header />
+      <Header h1Text="Map Demo" />
       <div className="flex flex-wrap justify-center items-center md:pt-20 pt-10 pb-20 font-barrio text-purple-50 md:text-5xl text-2xl">
         <h1 className="basis-full h-fit text-center">
           Pick a map

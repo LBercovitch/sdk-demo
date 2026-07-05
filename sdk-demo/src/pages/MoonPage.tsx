@@ -1,21 +1,18 @@
-import { Link } from "react-router";
-import Map from '../components/Map.tsx'
+import MapPage from '../components/MapPage.tsx'
 
 function MoonPage() {
+  var headerText = "The Moon";
   var mapId = "d7e6f5eaec4a4d259269c65c6d5435bf";
+  var mapSwitchButton = {
+    navToLink: "/earth",
+    navImgSrc: "/Earth.png",
+    navImgAlt: "Earth",
+    navLabel: "Return to Earth"
+  }
+
   return (
     <>
-      <div className="w-30 p-5">
-        <Link to="/earth">
-          <div className="flex flex-col flex-shrink items-center text-center w-35">
-            <img src="/Earth.png" alt="Earth" className="w-20" />
-            <p className="text-neutral-50">
-              Return to Earth
-            </p>
-          </div>
-        </Link>
-      </div>
-      <Map mapId={mapId} />
+      <MapPage headerText={headerText} mapId={mapId} mapSwitchButton={mapSwitchButton}/>
     </>
   )
 }
