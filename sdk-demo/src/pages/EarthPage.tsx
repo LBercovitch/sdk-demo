@@ -7,10 +7,10 @@ function EarthPage() {
     <>
       <div className="w-30 p-5">
         <Link to="/moon">
-          <div className="flex flex-col flex-shrink items-center text-center w-30">
+          <div className="flex flex-col flex-shrink items-center text-center w-35">
             <img src="/Moon.png" alt="Moon" className="w-20" />
             <p className="text-neutral-50">
-              To the Moon!
+              Off to the Moon!
             </p>
           </div>
         </Link>

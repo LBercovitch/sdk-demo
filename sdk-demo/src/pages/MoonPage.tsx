@@ -7,7 +7,7 @@ function MoonPage() {
     <>
       <div className="w-30 p-5">
         <Link to="/earth">
-          <div className="flex flex-col flex-shrink items-center text-center w-30">
+          <div className="flex flex-col flex-shrink items-center text-center w-35">
             <img src="/Earth.png" alt="Earth" className="w-20" />
             <p className="text-neutral-50">
               Return to Earth
