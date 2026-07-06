@@ -11,9 +11,7 @@ function EarthPage() {
   }
 
   return (
-    <>
-      <MapPage headerText={headerText} mapId={mapId} mapSwitchButton={mapSwitchButton}/>
-    </>
+    <MapPage headerText={headerText} mapId={mapId} mapSwitchButton={mapSwitchButton}/>
   )
 }
 

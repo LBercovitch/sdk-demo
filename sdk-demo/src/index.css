@@ -14,11 +14,11 @@
 
 html,
 body {
-  @apply h-full m-0 bg-slate-950;
+  @apply bg-slate-950;
 }
 
 arcgis-map {
-  @apply flex w-full h-screen justify-self-center bg-neutral-50;
+  @apply flex w-full h-[calc(100vh-96px)] md:h-[calc(100vh-180px)] justify-self-center bg-neutral-50;
 }
 
 .header-text {
