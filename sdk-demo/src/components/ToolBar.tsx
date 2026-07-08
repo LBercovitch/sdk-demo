@@ -20,7 +20,7 @@ function ToolBar({ buttons, direction, active }: ToolBarProps) {
           key={button.id}
           onClick={button.onClick}
           className={`flex flex-col items-center text-center justify-center
-            text-xs px-2 py-2 rounded-2xl border-1 border-blue-200 cursor-pointer
+            text-xs px-2 py-2 rounded-xl border-1 border-blue-200 cursor-pointer
             hover:bg-blue-950 hover:text-blue-200
             ${active === button.id ? "bg-blue-950 text-blue-200" : "text-blue-950 bg-blue-200"}`}
         >
