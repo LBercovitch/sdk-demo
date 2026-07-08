@@ -14,15 +14,15 @@ type ToolBarProps = {
 
 function ToolBar({ buttons, direction, active }: ToolBarProps) {
   return (
-    <div className={`bg-blue-950 p-4 ${direction === "vertical" ? "flex flex-col gap-4" : ""}`}>
+    <div className={`bg-blue-200 p-4 ${direction === "vertical" ? "flex flex-col gap-4" : ""}`}>
       {buttons.map(button => (
         <button
           key={button.id}
           onClick={button.onClick}
           className={`flex flex-col items-center text-center justify-center
             text-xs px-2 py-2 rounded-xl border-1 border-blue-200 cursor-pointer
-            hover:bg-blue-950 hover:text-blue-200
-            ${active === button.id ? "bg-blue-950 text-blue-200" : "text-blue-950 bg-blue-200"}`}
+            hover:bg-slate-900 hover:text-blue-200
+            ${active === button.id ? "bg-slate-900 text-blue-200" : "text-blue-950 bg-blue-300"}`}
         >
           {button.icon}
           {button.label}
