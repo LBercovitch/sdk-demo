@@ -1,25 +1,20 @@
 import { Link } from "react-router";
-import Header from '../components/Header.tsx'
-import Map from '../components/Map.tsx'
-
-type mapSwitchButton = {
-  navToLink: string;
-  navImgSrc: string;
-  navImgAlt: string;
-  navLabel: string;
-};
+import Header from '../components/Header.tsx';
+import Map from '../components/Map.tsx';
+import { type MapConfig } from "../config/mapConfig";
 
 type MapPageProps = {
-  headerText: string;
-  mapId: string;
-  mapSwitchButton: mapSwitchButton;
+  mapConfig: MapConfig;
 };
 
-function MapPage({headerText, mapId, mapSwitchButton}: MapPageProps) {
+function MapPage({mapConfig}: MapPageProps) {
+  const mapSwitchButton = mapConfig.mapSwitchButton;
+  const headerText = mapConfig.title;
+
   var navButton = (
     <Link to={mapSwitchButton.navToLink}>
       <div className="group flex flex-col justify-center items-center text-center
-        w-20 md:w-37 h-20 md:h-35 border-2 border-slate-700 rounded-3xl
+        w-20 md:w-37 h-20 md:h-35 border-2 border-slate-700 rounded-xl md:rounded-2xl
         hover:border-indigo-200 hover:bg-blue-950"
       >
         <img
@@ -37,7 +32,7 @@ function MapPage({headerText, mapId, mapSwitchButton}: MapPageProps) {
   return (
     <>
       <Header h1Text={headerText} navButton={navButton} />
-      <Map mapId={mapId} />
+      <Map mapConfig={mapConfig} />
     </>
   )
 }

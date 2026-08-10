@@ -1,14 +1,15 @@
 import { Routes, Route } from "react-router";
 import LandingPage from "./pages/LandingPage";
-import EarthPage from "./pages/EarthPage";
-import MoonPage from "./pages/MoonPage";
+import MapPage from "./pages/MapPage";
+import { earthConfig } from "./config/earthConfig";
+import { moonConfig } from "./config/moonConfig";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<LandingPage />} />
-      <Route path="/earth" element={<EarthPage />} />
-      <Route path="/moon" element={<MoonPage />} />
+      <Route path="/earth" element={<MapPage mapConfig={earthConfig} />} />
+      <Route path="/moon" element={<MapPage mapConfig={moonConfig} />} />
     </Routes>
   )
 }
