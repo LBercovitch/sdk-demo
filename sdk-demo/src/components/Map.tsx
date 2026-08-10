@@ -90,12 +90,17 @@ function Map({ mapConfig }: MapProps) {
   // For each tool in the config's right toolbar, get the id, icon, label, and onClick function
   const rightButtons = mapConfig.rightTools.map((toolId) => {
     const tool = mapTools[toolId];
+    const componentName = tool.component;
+
+    const click = componentName === "feature-table" ?
+      (() => toggleTable()) :
+      (() => toggleTool(tool.id, setLeftTool));
 
     return {
       id: tool.id,
       icon: ( <tool.icon iconHeight="40px" iconWidth="40px" /> ),
       label: tool.label,
-      onClick: () => toggleTool(tool.id, setRightTool),
+      onClick: click,
     };
   });
 
