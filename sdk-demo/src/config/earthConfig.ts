@@ -21,5 +21,6 @@ export const earthConfig: MapConfig = {
   ],
   rightTools: [
     "editor",
+    "print"
   ]
 } as const;
