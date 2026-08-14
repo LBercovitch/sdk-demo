@@ -9,6 +9,10 @@ export const earthConfig: MapConfig = {
     navImgAlt: "The Moon",
     navLabel: "Off to the Moon!"
   },
+  printTemplate: {
+    logoImg: "/Earth.png",
+    logoAlt: "Earth",
+  },
   leftTools: [
     "layerList",
     "layerTable",

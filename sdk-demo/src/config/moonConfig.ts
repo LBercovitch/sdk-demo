@@ -9,6 +9,10 @@ export const moonConfig: MapConfig = {
     navImgAlt: "Earth",
     navLabel: "Return to Earth",
   },
+  printTemplate: {
+    logoImg: "/Moon.png",
+    logoAlt: "The Moon",
+  },
   leftTools: [
     "layerList",
     "measureDistance",
@@ -16,5 +20,6 @@ export const moonConfig: MapConfig = {
   rightTools: [
     "editor",
     "layerTable",
+    "print",
   ]
 } as const;

@@ -5,13 +5,19 @@ export type MapConfig = {
   title: string;
   mapId: string;
   mapSwitchButton: MapSwitchButton;
+  printTemplate: PrintTemplate;
   leftTools: ToolId[];
   rightTools: ToolId[];
 };
 
-type MapSwitchButton = {
-  navToLink: string,
-  navImgSrc: string,
-  navImgAlt: string,
-  navLabel: string
-}
+export type MapSwitchButton = {
+  navToLink: string;
+  navImgSrc: string;
+  navImgAlt: string;
+  navLabel: string;
+};
+
+export type PrintTemplate = {
+  logoImg: string;
+  logoAlt: string;
+};
