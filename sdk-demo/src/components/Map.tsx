@@ -41,8 +41,8 @@ const toolComponents = {
   "editor": (slot: "top-left" | "top-right") => (
     <arcgis-editor slot={slot} />
   ),
-  "print": (printTemplate: PrintTemplate, closeFunction: () => void) => (
-    <Popup closeFunction={closeFunction} toolComponent={<Print printTemplate={printTemplate} />} />
+  "print": (mapConfig: MapConfig, closeFunction: () => void) => (
+    <Popup closeFunction={closeFunction} toolComponent={<Print printTemplate={mapConfig.printTemplate} />} />
   )
 };
 
@@ -118,10 +118,9 @@ function Map({ mapConfig }: MapProps) {
     toolComponents[mapTools[rightTool].component]("top-right") :
     null;
 
-  // TODO: Make this generic, i.e. set printtemplate elsewhere, after all, other popup tools won't need it
   const activePopupComponent = popupTool && mapTools[popupTool] &&
     mapTools[popupTool].position === "popup" ?
-    toolComponents[mapTools[popupTool].component](mapConfig.printTemplate, () => setPopupTool(null)) :
+    toolComponents[mapTools[popupTool].component](mapConfig, () => setPopupTool(null)) :
     null;
 
   const activeTable = tableVisible ?
