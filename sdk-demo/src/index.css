@@ -20,3 +20,15 @@ body {
 .header-text {
   @apply font-barrio text-purple-50 text-shadow-blue-h1;
 }
+
+.print-input {
+  @apply bg-slate-50 rounded-md p-2 mb-6;
+}
+
+.print-input[type="checkbox"] {
+  @apply h-6 w-6 mr-2 cursor-pointer;
+}
+
+select.print-input {
+  @apply cursor-pointer;
+}

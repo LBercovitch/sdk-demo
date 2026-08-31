@@ -1,4 +1,5 @@
 import { type ToolId } from "./mapTools";
+import { type pageLayout } from "./pageLayout";
 
 // This file contains only a type definition that all map configs should follow
 export type MapConfig = {
@@ -18,6 +19,5 @@ export type MapSwitchButton = {
 };
 
 export type PrintTemplate = {
-  logoImg: string;
-  logoAlt: string;
+  pageLayout: pageLayout;
 };

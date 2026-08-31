@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ToolBar from "./ToolBar";
 
 import { mapTools, type ToolId } from "../config/mapTools";
-import { type MapConfig, type PrintTemplate } from "../config/mapConfig";
+import { type MapConfig } from "../config/mapConfig";
 
 // ArcGIS components
 import "@arcgis/map-components/components/arcgis-map";
@@ -14,7 +14,8 @@ import "@arcgis/map-components/components/arcgis-distance-measurement-2d";
 import "@arcgis/map-components/components/arcgis-feature-table";
 
 // custom tools
-import Print from "./mapTools/Print";
+import Print from "./printTools/Print";
+import { PrintProvider } from "./printTools/PrintProvider";
 import Popup from "./Popup";
 
 type MapProps = {
@@ -42,7 +43,16 @@ const toolComponents = {
     <arcgis-editor slot={slot} />
   ),
   "print": (mapConfig: MapConfig, closeFunction: () => void) => (
-    <Popup closeFunction={closeFunction} toolComponent={<Print printTemplate={mapConfig.printTemplate} />} />
+    <Popup
+      closeFunction={closeFunction}
+      toolComponent={
+        // Use a provider to allow for the print config states to be shared by the
+        // print tool, pdf creator, and map view in the preview
+        <PrintProvider defaults={mapConfig.printTemplate}>
+          <Print />
+        </PrintProvider>
+      }
+    />
   )
 };
 

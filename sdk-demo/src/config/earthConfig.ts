@@ -10,8 +10,24 @@ export const earthConfig: MapConfig = {
     navLabel: "Off to the Moon!"
   },
   printTemplate: {
-    logoImg: "/Earth.png",
-    logoAlt: "Earth",
+    pageLayout: {
+      size: "legal",
+      orientation: "landscape",
+      margin: 15, // pixels
+      title: "The Home World",
+      center: [49.26, -123.11], 
+      scale: 250000, // i.e. 1:25000
+      rotation: 0, // north at the top
+      legend: true,
+      scaleBar: true,
+      northArrow: true,
+      logoImg: "/Earth.png",
+      logoAlt: "Earth",
+      logo: true,
+      logoSource: undefined, // if undefined and logo is ture, use the default logoImg
+      attribution: true,
+      attributionText: "Leah Bercovitch, 2026",
+    }
   },
   leftTools: [
     "layerList",
