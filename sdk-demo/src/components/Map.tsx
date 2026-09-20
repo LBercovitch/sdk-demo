@@ -14,8 +14,8 @@ import "@arcgis/map-components/components/arcgis-distance-measurement-2d";
 import "@arcgis/map-components/components/arcgis-feature-table";
 
 // custom tools
-import Print from "./printTools/Print";
-import { PrintProvider } from "./printTools/PrintProvider";
+import Print from "./printTool/Print";
+import { PrintProvider } from "./printTool/PrintProvider";
 import Popup from "./Popup";
 
 type MapProps = {

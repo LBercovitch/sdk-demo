@@ -1,17 +1,16 @@
 import PrinterIcon from "../../icons/PrinterIcon";
 import PrintSettings from "./PrintSettings";
+import PrintPreview from "./PrintPreview";
 
 function Print() {
-  // const { printOptions, updatePrintOption } = usePrint();
-
   return (
     <div className="flex flex-col w-full h-full">
       <h1 className="shrink-0 font-bold text-3xl text-center py-6">
         Print Preview
       </h1>
       <div className="flex h-[calc(100%-66px)] bg-slate-200 rounded-b-md">
-        <div className="flex-1">
-          MAP
+        <div className="flex-1 flex items-center justify-center p-6">
+          <PrintPreview />
         </div>
         <div className="w-80 flex flex-col bg-slate-500 text-slate-200 rounded-br-md">
           {/* Header */}

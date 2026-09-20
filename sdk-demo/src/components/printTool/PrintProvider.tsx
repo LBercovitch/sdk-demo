@@ -1,6 +1,6 @@
 // This component is a provider to keep track of the print component states
-// so that they can easily be carried over from the form to the preview
-// and the pdf builder without 
+// so that they can easily be carried over from the form, to the preview,
+// and the pdf builder without requiring prop drilling
 
 import { createContext, useContext, useState, type ReactNode } from "react";
 import type { pageLayout } from "../../config/pageLayout";

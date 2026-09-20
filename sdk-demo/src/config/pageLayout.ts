@@ -19,7 +19,7 @@ export type pageLayout = {
   logoImg: string;
   logoAlt: string;
   logo: boolean; // i.e. show the logo on the layout
-  logoSource: string | File | undefined; // a custom file chosen by the use, overrides the logoImg
+  logoSource: string | undefined; // a custom file chosen by the use, overrides the logoImg
 
   attribution: boolean;
   attributionText: string | undefined;

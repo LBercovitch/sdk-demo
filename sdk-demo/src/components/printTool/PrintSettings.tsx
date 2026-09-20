@@ -56,8 +56,8 @@ function PrintSettings() {
       <input
         id="scale"
         type="number"
-        step="25000"
-        min="25000"
+        step="10000"
+        min="10000"
         max="500000000"
         value={printOptions.scale}
         onChange={e =>
@@ -135,14 +135,19 @@ function PrintSettings() {
             type="file"
             // NOTE: the user can easily change the accept attribute, so it is good practice
             // to have additional checks to make sure a valid image file type is used
+            // and not something malicious
             accept="image/*"
             onChange={e => {
               const file = e.target.files?.[0];
-              updatePrintOption("logoSource", file);
+              // Create a temporary URL from the file so that it can be used in an image element
+              const url = file ? URL.createObjectURL(file) : undefined;
+              updatePrintOption("logoSource", url);
             }}
             className="print-input"
           />
-          <p className="text-xs mb-6 mt-[-18px]">* If no file is selected, your organization's default logo will be used instead.</p>
+          <p className="text-xs mb-6 mt-[-18px]">
+            * If no file is selected, your organization's default logo will be used instead.
+          </p>
         </>
       }
       
