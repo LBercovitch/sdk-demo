@@ -1,6 +1,12 @@
 import { usePrint } from "./PrintProvider";
 import { pageSizes } from "../../config/pageLayout";
 
+/*
+ * This component defines the fields in the print settings form
+ * and uses the PrintProvider to share component states with the
+ * actual print page layout and the pdf builder 
+ */
+
 function PrintSettings() {
   const { printOptions, updatePrintOption } = usePrint();
 
