@@ -8,8 +8,8 @@ function Print() {
       <h1 className="shrink-0 font-bold text-3xl text-center py-6">
         Print Preview
       </h1>
-      <div className="flex h-[calc(100%-66px)] bg-slate-200 rounded-b-md">
-        <div className="flex-1 flex items-center justify-center p-6">
+      <div className="min-h-0 flex-1 flex bg-slate-200 rounded-b-md">
+        <div className="min-w-0 min-h-0 flex-1 flex items-center justify-center p-6">
           <PrintPreview />
         </div>
         <div className="w-80 flex flex-col bg-slate-500 text-slate-200 rounded-br-md">
