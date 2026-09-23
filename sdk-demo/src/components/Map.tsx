@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import ToolBar from "./ToolBar";
 
 import { mapTools, type ToolId } from "../config/mapTools";
 import { type MapConfig } from "../config/mapConfig";
+import type MapView from "@arcgis/core/views/MapView";
 
 // ArcGIS components
 import "@arcgis/map-components/components/arcgis-map";
@@ -42,13 +43,17 @@ const toolComponents = {
   "editor": (slot: "top-left" | "top-right") => (
     <arcgis-editor slot={slot} />
   ),
-  "print": (mapConfig: MapConfig, closeFunction: () => void) => (
+  "print": (mapConfig: MapConfig, mapView: MapView | null, closeFunction: () => void) => (
     <Popup
       closeFunction={closeFunction}
       toolComponent={
         // Use a provider to allow for the print config states to be shared by the
         // print tool, pdf creator, and map view in the preview
-        <PrintProvider defaults={mapConfig.printTemplate}>
+        <PrintProvider
+          defaults={mapConfig.printTemplate}
+          initialCenter={mapView?.center}
+          initialRotation={mapView?.rotation}
+        >
           <Print />
         </PrintProvider>
       }
@@ -57,6 +62,9 @@ const toolComponents = {
 };
 
 function Map({ mapConfig }: MapProps) {
+  const mapRef = useRef<HTMLArcgisMapElement>(null);
+  const [mapView, setMapView] = useState<MapView  | null>(null);
+
   const [leftTool, setLeftTool] = useState<ToolId | null>(null);
   const [rightTool, setRightTool] = useState<ToolId | null>(null);
   const [popupTool, setPopupTool] = useState<ToolId | null>(null);
@@ -64,10 +72,40 @@ function Map({ mapConfig }: MapProps) {
 
   // When the map id changes, i.e. a new map is loaded, we need to reset all of the tools
   useEffect(() => {
+    // Reset the states
     setLeftTool(null);
     setRightTool(null);
     setPopupTool(null);
     setTableVisible(false);
+
+    // Get the map's element and return if it doesn't exist
+    const mapElement = mapRef.current;
+    if (!mapElement) return;
+
+    // When the map is ready, get the center, rotation, and scale of
+    // the current view
+    const handleViewReady = () => {
+      const view = mapElement.view;
+      if (!view) return;
+
+      if (view) {
+        setMapView(view);
+      }
+
+      console.log(view.center);
+      console.log(view.rotation);
+    };
+
+    // Add an event listener to track map changes
+    mapElement.addEventListener("arcgisViewReadyChange", handleViewReady);
+
+    // Remove the listener when the map is destroyed
+    return () => {
+      mapElement.removeEventListener(
+        "arcgisViewReadyChange",
+        handleViewReady
+      );
+    };
   }, [mapConfig.mapId]);
 
   const mapButton = (toolId: ToolId, stateUpdater: React.Dispatch<React.SetStateAction<ToolId | null>>) => {
@@ -130,7 +168,7 @@ function Map({ mapConfig }: MapProps) {
 
   const activePopupComponent = popupTool && mapTools[popupTool] &&
     mapTools[popupTool].position === "popup" ?
-    toolComponents[mapTools[popupTool].component](mapConfig, () => setPopupTool(null)) :
+    toolComponents[mapTools[popupTool].component](mapConfig, mapView, () => setPopupTool(null)) :
     null;
 
   const activeTable = tableVisible ?
@@ -157,6 +195,7 @@ function Map({ mapConfig }: MapProps) {
       {/* The 96px and 180px are the height of the header, sorry to hard code it :( */}
       <div key={mapConfig.mapId} className="flex flex-col h-[calc(100vh-96px)] md:h-[calc(100vh-180px)]">
         <arcgis-map
+          ref={mapRef}
           id="demo-map"
           item-id={mapConfig.mapId}
           className={`flex-1 w-full bg-neutral-50 ${tableVisible ? "hidden md:block": ""}`}

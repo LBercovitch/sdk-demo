@@ -5,6 +5,7 @@
 import { createContext, useContext, useState, type ReactNode } from "react";
 import type { pageLayout } from "../../config/pageLayout";
 import type { PrintTemplate } from "../../config/mapConfig";
+import type Point from "@arcgis/core/geometry/Point";
 
 type PrintContextType = {
   printOptions: pageLayout;
@@ -18,16 +19,24 @@ const PrintContext = createContext<PrintContextType | null>(null);
 
 type PrintProviderProps = {
   defaults: PrintTemplate;
+  initialCenter?: Point;
+  initialRotation?: number;
   children: ReactNode;
 };
 
 export function PrintProvider({
   defaults,
+  initialCenter,
+  initialRotation,
   children,
 }: PrintProviderProps) {
-  const [printOptions, setPrintOptions] = useState<pageLayout>(
-    () => ({ ...defaults.pageLayout })
-  );
+  const [printOptions, setPrintOptions] = useState<pageLayout>(() => ({
+    ...defaults.pageLayout,
+    center: initialCenter
+      ? [initialCenter.x, initialCenter.y]
+      : defaults.pageLayout.center,
+    rotation: initialRotation ?? defaults.pageLayout.rotation,
+  }));
 
   const updatePrintOption = <K extends keyof pageLayout>(
     key: K,

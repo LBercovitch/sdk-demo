@@ -32,6 +32,7 @@ function PrintPreview() {
   const pageWidth = width * 96;
   const pageHeight = height * 96;
 
+  // Use a resize observer to keep track of the page container dimensions.
   useEffect(() => {
     if (!containerRef.current) return;
 
@@ -45,10 +46,13 @@ function PrintPreview() {
     });
 
     observer.observe(containerRef.current);
+    console.log(printOptions);
 
     return () => observer.disconnect();
   }, []);
 
+  // The container size can then be used to determine which dimention
+  // limits the size of the page
   const scale = Math.min(
     containerSize.width / pageWidth,
     containerSize.height / pageHeight
