@@ -21,6 +21,7 @@ type PrintProviderProps = {
   defaults: PrintTemplate;
   initialCenter?: Point;
   initialRotation?: number;
+  mapId: string;
   children: ReactNode;
 };
 
@@ -28,6 +29,7 @@ export function PrintProvider({
   defaults,
   initialCenter,
   initialRotation,
+  mapId,
   children,
 }: PrintProviderProps) {
   const [printOptions, setPrintOptions] = useState<pageLayout>(() => ({
@@ -36,6 +38,7 @@ export function PrintProvider({
       ? [initialCenter.x, initialCenter.y]
       : defaults.pageLayout.center,
     rotation: initialRotation ?? defaults.pageLayout.rotation,
+    mapId: mapId,
   }));
 
   const updatePrintOption = <K extends keyof pageLayout>(

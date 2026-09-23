@@ -53,6 +53,7 @@ const toolComponents = {
           defaults={mapConfig.printTemplate}
           initialCenter={mapView?.center}
           initialRotation={mapView?.rotation}
+          mapId={mapConfig.mapId}
         >
           <Print />
         </PrintProvider>

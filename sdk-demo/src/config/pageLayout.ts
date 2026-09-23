@@ -5,7 +5,7 @@ export type pageLayout = {
   orientation: "portrait" | "landscape";
   margin: number;
 
-  // Map optiony
+  // Map options
   title: string;
   center: [number, number];
   scale: number;
@@ -23,6 +23,8 @@ export type pageLayout = {
 
   attribution: boolean;
   attributionText: string | undefined;
+
+  mapId: string | undefined;
 }
 
 export const pageSizes = { // in inches, landscape
