@@ -1,3 +1,5 @@
+import Point from "@arcgis/core/geometry/Point.js";
+
 // We can use some typescript definitions here to define the elements of a print layout
 export type pageLayout = {
   // page options
@@ -7,7 +9,7 @@ export type pageLayout = {
 
   // Map options
   title: string;
-  center: [number, number];
+  center: Point | null;
   scale: number;
   rotation: number;
 
