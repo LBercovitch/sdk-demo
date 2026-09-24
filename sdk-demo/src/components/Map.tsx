@@ -99,12 +99,19 @@ function Map({ mapConfig }: MapProps) {
     // Define the onClick function for the button. It will either
     // control what tools are active in the map slots
     // or toggle the visibility of the feature table or tool popup
-    const click = componentPos === "table" ?
-      (() => toggleTable()) : componentPos === "popup" ?
-      tool.id === "print" ?
-        () => openPrint() :
-        () => toggleTool(tool.id, setPopupTool) :
-      (() => toggleTool(tool.id, stateUpdater));
+    let click: () => void;
+
+    if (componentPos === "table") {
+      click = () => toggleTable();
+    } else if (componentPos === "popup") {
+      if (toolId === "print") {
+        click = () => openPrint();
+      } else {
+        click = () => toggleTool(toolId, setPopupTool);
+      }
+    } else {
+      click = () => toggleTool(toolId, stateUpdater);
+    }
 
     return {
       id: tool.id,
